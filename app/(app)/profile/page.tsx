@@ -42,10 +42,10 @@ export default function ProfilePage() {
 
     // Fetch profile
     const { data: profileData, error: profileError } = await supabase
-      .from('profiles')
-      .select('full_name, email, created_at')
-      .eq('id', user.id)
-      .single();
+  .from('profiles')
+  .select('full_name, email, created_at')
+  .eq('id', user.id)
+  .maybeSingle();
 
     if (profileData) {
       setProfile({
@@ -85,14 +85,18 @@ export default function ProfilePage() {
     setSaving(true);
 
     const { error } = await supabase
-      .from('profiles')
-      .upsert({
-        id: user.id,
-        full_name: profile.full_name,
-        email: profile.email,
-        updated_at: new Date().toISOString(),
-      });
-
+  .from('profiles')
+  .upsert(
+    {
+      id: user.id,
+      full_name: profile.full_name,
+      email: profile.email,
+      updated_at: new Date().toISOString(),
+    },
+    {
+      onConflict: 'id',
+    }
+  );
     if (!error) {
       // Profile saved successfully
     }
