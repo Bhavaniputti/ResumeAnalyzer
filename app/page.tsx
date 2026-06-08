@@ -18,7 +18,6 @@ const features = [
 ];
 
 const stats = [
-  { value: '50K+', label: 'Resumes Analyzed' },
   { value: '94%', label: 'Match Accuracy' },
   { value: '3x', label: 'ATS Pass Rate' },
   { value: '12K+', label: 'Users Hired' },
@@ -121,28 +120,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <Badge className="mb-4 bg-green-50 text-green-700 border-green-200">Testimonials</Badge>
-            <h2 className="text-4xl font-bold text-foreground mb-4">Loved by job seekers worldwide</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map(t => (
-              <div key={t.name} className="bg-white rounded-2xl p-6 border border-border">
-                <div className="flex mb-4">{[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-yellow-400 fill-yellow-400" />)}</div>
-                <p className="text-foreground mb-6 text-sm leading-relaxed">&ldquo;{t.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full brand-gradient flex items-center justify-center text-white font-semibold text-sm">{t.avatar}</div>
-                  <div><p className="font-semibold text-foreground text-sm">{t.name}</p><p className="text-xs text-muted-foreground">{t.role}</p></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="brand-gradient rounded-2xl p-10 text-center text-white">
