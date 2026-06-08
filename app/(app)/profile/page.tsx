@@ -86,22 +86,17 @@ export default function ProfilePage() {
 
     const { error } = await supabase
   .from('profiles')
-  .upsert(
-    {
-      id: user.id,
-      full_name: profile.full_name,
-      email: profile.email,
-      updated_at: new Date().toISOString(),
-    },
-    {
-      onConflict: 'id',
-    }
-  );
-    if (!error) {
-      // Profile saved successfully
-    }
+  .upsert({
+    id: user.id,
+    full_name: profile.full_name,
+    email: profile.email,
+  });
 
-    setSaving(false);
+if (!error) {
+  // Profile saved successfully
+}
+
+setSaving(false);
   };
 
   const getInitials = (name: string) => {
